@@ -3,33 +3,37 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, MapPin, Sparkles } from 'lucide-react';
 import heroBackground from '@/assets/hero-background.jpg';
 import { motion } from 'framer-motion';
+import FAQChatbot from './FAQChatbot';
 
 const HeroSection = () => {
+  const targetDate = new Date("2025-09-27T09:00:00"); // Updated target date
   const [timeLeft, setTimeLeft] = useState({
-    days: 30,
-    hours: 12,
-    minutes: 45,
-    seconds: 30
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
   });
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        } else if (prev.hours > 0) {
-          return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        } else if (prev.days > 0) {
-          return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        }
-        return prev;
-      });
-    }, 1000);
+    const calculateTimeLeft = () => {
+      const now = new Date();
+      const difference = targetDate.getTime() - now.getTime();
 
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((difference / (1000 * 60)) % 60);
+        const seconds = Math.floor((difference / 1000) % 60);
+
+        setTimeLeft({ days, hours, minutes, seconds });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    const timer = setInterval(calculateTimeLeft, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [targetDate]);
 
   return (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-2 sm:px-4">
@@ -111,7 +115,7 @@ const HeroSection = () => {
             whileHover={{ scale: 1.05 }}
           >
             <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500 flex-shrink-0" />
-            <span className="font-medium text-sm sm:text-base md:text-lg text-foreground/90">March 15-17, 2024</span>
+            <span className="font-medium text-sm sm:text-base md:text-lg text-foreground/90">September 27, 2025</span>
           </motion.div>
           <motion.div 
             className="flex items-center gap-2 sm:gap-3 glass-card backdrop-blur-sm border-purple-200/20 
@@ -119,7 +123,14 @@ const HeroSection = () => {
             whileHover={{ scale: 1.05 }}
           >
             <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-pink-500 flex-shrink-0" />
-            <span className="font-medium text-sm sm:text-base md:text-lg text-foreground/90">Hybrid Event</span>
+            <a
+              href="https://maps.app.goo.gl/63FmktWjyWJejNHG9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-sm sm:text-base md:text-lg text-foreground/90 hover:text-blue-500 transition-colors duration-300"
+            >
+              SAP Labs, Whitefield
+            </a>
           </motion.div>
         </motion.div>
 
@@ -179,6 +190,8 @@ const HeroSection = () => {
           </Button>
         </motion.div>
       </div>
+
+      <FAQChatbot />
     </section>
   );
 };

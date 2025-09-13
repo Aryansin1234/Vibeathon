@@ -69,7 +69,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/10 to-blue-400/10 flex items-center justify-center backdrop-blur-sm group-hover:from-blue-500/20 group-hover:to-blue-400/20 transition-all duration-300">
                   <Calendar className="w-4 h-4 text-blue-500" />
                 </div>
-                <span className="text-muted-foreground/80">March 15-17, 2024</span>
+                <span className="text-muted-foreground/80">September 27, 2025</span>
               </motion.div>
               <motion.div 
                 className="flex items-center gap-3 text-sm group"
@@ -79,7 +79,14 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/10 to-blue-400/10 flex items-center justify-center backdrop-blur-sm group-hover:from-blue-500/20 group-hover:to-blue-400/20 transition-all duration-300">
                   <MapPin className="w-4 h-4 text-blue-400" />
                 </div>
-                <span className="text-muted-foreground/80">Innovation Hub, Tech City</span>
+                <a
+                  href="https://maps.app.goo.gl/63FmktWjyWJejNHG9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground/80 hover:text-blue-500 transition-colors duration-300"
+                >
+                  SAP Labs, Whitefield, Bengaluru, Karnataka, India
+                </a>
               </motion.div>
             </div>
           </div>
@@ -139,40 +146,9 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-  <div className="pt-8 border-t border-blue-200/20">
+        <div className="pt-8 border-t border-blue-200/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground/70">
-              © 2024 Vibeathon. All rights reserved.
-            </p>
-            <div className="flex gap-8 text-sm">
-              <motion.a 
-                href="#" 
-                className="text-muted-foreground/70 hover:text-blue-500 transition-colors relative group"
-                whileHover={{ y: -2 }}
-              >
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gradient-to-r from-blue-500 to-blue-400 
-                  group-hover:w-full transition-all duration-300" />
-                Privacy Policy
-              </motion.a>
-              <motion.a 
-                href="#" 
-                className="text-muted-foreground/70 hover:text-blue-500 transition-colors relative group"
-                whileHover={{ y: -2 }}
-              >
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gradient-to-r from-blue-500 to-blue-400 
-                  group-hover:w-full transition-all duration-300" />
-                Terms of Service
-              </motion.a>
-              <motion.a 
-                href="#" 
-                className="text-muted-foreground/70 hover:text-blue-500 transition-colors relative group"
-                whileHover={{ y: -2 }}
-              >
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gradient-to-r from-blue-500 to-blue-400 
-                  group-hover:w-full transition-all duration-300" />
-                Code of Conduct
-              </motion.a>
-            </div>
+            {/* Removed copyright, privacy policy, and other links */}
           </div>
         </div>
       </div>

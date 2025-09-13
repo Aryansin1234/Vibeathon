@@ -1,10 +1,33 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sparkles } from 'lucide-react';
 
 const Introduction = () => {
   const [showRules, setShowRules] = useState(false);
+
+  const parallaxVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.2,
+        duration: 0.8,
+        ease: 'easeOut',
+      },
+    }),
+  };
+
+  const rules = [
+    "Teams can have up to 4 members.",
+    "All projects must be submitted before the deadline.",
+    "Judging criteria include innovation, impact, and presentation.",
+    "Follow the code of conduct at all times.",
+    "Participants must have hands-on knowledge of Git and GitHub.",
+    "Ensure your project aligns with the theme of the Vibeathon.",
+    "Be prepared to present your project to the judges in a 5-minute pitch."
+  ];
 
   return (
     <section className="relative text-center px-4 max-w-5xl mx-auto mb-20 pt-20">
@@ -26,11 +49,11 @@ const Introduction = () => {
       >
         <div className="relative inline-block mb-6">
           <motion.div
-            className="absolute -top-8 -left-8 text-blue-500/80"
+            className="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 text-blue-500/80"
             animate={{ rotate: [0, 360], scale: [1, 1.2, 1] }}
             transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
           >
-            <Sparkles className="w-8 h-8" />
+            <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" />
           </motion.div>
           <h2 className="text-5xl md:text-6xl font-black mb-6 relative">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 filter drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]">
@@ -41,11 +64,11 @@ const Introduction = () => {
             </span>
           </h2>
           <motion.div
-            className="absolute -top-8 -right-8 text-blue-400/80"
+            className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 text-blue-400/80"
             animate={{ rotate: [360, 0], scale: [1, 1.2, 1] }}
             transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
           >
-            <Sparkles className="w-8 h-8" />
+            <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" />
           </motion.div>
         </div>
         <motion.p
@@ -89,7 +112,7 @@ const Introduction = () => {
           <Button
             size="lg"
             className="relative px-8 py-3 font-semibold rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-purple-500 text-white shadow-lg border-2 border-transparent hover:border-blue-400 transition-all duration-300 overflow-hidden"
-            onClick={() => setShowRules(true)}
+            onClick={() => setShowRules((prev) => !prev)}
           >
             <span className="relative z-10">More Information & Rules</span>
             <motion.div
@@ -101,56 +124,22 @@ const Introduction = () => {
         </motion.div>
       </motion.div>
 
-      {/* Enhanced Expanding Accordion Rules Card */}
-      <motion.div
-        initial={false}
-        animate={showRules ? "open" : "closed"}
-        variants={{
-          open: { height: "auto", opacity: 1, marginTop: 20 },
-          closed: { height: 0, opacity: 0, marginTop: 0 },
-        }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="overflow-visible flex justify-center"
-      >
-        {showRules && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, boxShadow: "0 0 0 0 rgba(59,130,246,0.15)" }}
-            animate={{ opacity: 1, scale: 1, boxShadow: "0 8px 32px 0 rgba(59,130,246,0.15)" }}
-            exit={{ opacity: 0, scale: 0.95, boxShadow: "0 0 0 0 rgba(59,130,246,0.15)" }}
-            transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
-            className="bg-white/90 dark:bg-gray-900/90 rounded-xl shadow-xl p-8 max-w-md w-full relative border-2 border-transparent bg-clip-padding backdrop-blur-md"
-            style={{ borderImage: 'linear-gradient(90deg, #3b82f6 0%, #a78bfa 100%) 1' }}
-          >
-            <div className="flex items-center gap-2 mb-3">
-              <h3 className="text-xl font-bold text-blue-700">Event Rules</h3>
-            </div>
-            <button
-              className="absolute top-4 right-4 text-gray-500 hover:text-blue-600 text-2xl font-bold"
-              onClick={() => setShowRules(false)}
-              aria-label="Close rules"
-            >
-              &times;
-            </button>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 text-base mt-2">
-              {[
-                "Teams can have up to 4 members.",
-                "All projects must be submitted before the deadline.",
-                "Judging criteria include innovation, impact, and presentation.",
-                "Follow the code of conduct at all times."
-              ].map((rule, idx) => (
-                <motion.li
-                  key={rule}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 + idx * 0.15, duration: 0.4, type: "spring" }}
-                >
-                  {rule}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </motion.div>
+      {/* Rules Section */}
+      {showRules && (
+        <div className="relative mx-auto mt-10 max-w-md w-full">
+          <h3 className="text-2xl font-bold text-blue-700 mb-4">Event Rules</h3>
+          <ul className="space-y-4">
+            {rules.map((rule, index) => (
+              <li
+                key={index}
+                className="bg-white/90 dark:bg-gray-900/90 rounded-xl shadow-md p-4 border border-gray-200 dark:border-gray-700"
+              >
+                <p className="text-gray-700 dark:text-gray-200 text-base">{rule}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
   );
 };

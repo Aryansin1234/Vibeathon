@@ -20,7 +20,7 @@ const CTASection = () => {
   const features = [
     {
       icon: Code,
-      text: "48 hours of intense coding",
+      text: "6 hours of intense coding", // Updated duration
       gradient: "from-blue-500 to-purple-500"
     },
     {
@@ -197,7 +197,8 @@ const CTASection = () => {
               <Button 
                 size="lg" 
                 className="relative overflow-hidden group bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 
-                  hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-500"
+                  hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-500
+                  text-lg sm:text-xl md:text-2xl px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6"
               >
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-400 to-blue-700"
@@ -205,7 +206,7 @@ const CTASection = () => {
                   whileHover={{ x: 0 }}
                   transition={{ duration: 0.5 }}
                 />
-                <span className="relative z-10 flex items-center gap-2 text-xl font-bold px-12 py-6 text-white">
+                <span className="relative z-10 flex items-center gap-2 font-bold">
                   Join the Competition
                   <motion.div
                     animate={{ x: [0, 5, 0] }}
@@ -223,7 +224,7 @@ const CTASection = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              Registration closes in 30 days • Limited spots available
+              Registration closes on 23rd September • 150 spots available
             </motion.p>
           </motion.div>
 
