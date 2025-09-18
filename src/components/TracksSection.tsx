@@ -8,52 +8,28 @@ import { useInView } from 'react-intersection-observer';
 
 const tracks = [
 	{
-		id: 'ai-ml',
-		title: 'AI/ML',
-		description: 'Build intelligent solutions using machine learning and artificial intelligence',
+		id: 'ipx-hub',
+		title: 'Agenda to Calendar: The Smart Way',
+		description: 'Create a personalized and seamless journey for every attendee.',
 		icon: Brain,
 		color: 'from-blue-500 to-purple-600',
-		details: 'Create innovative AI models, chatbots, computer vision systems, or data analytics platforms.'
+		details: `Persona: Participant\n\nCore Idea: Build an all-in-one application that acts as a personal concierge for the SIT event.\n\nKey AI-Powered Features:\n- AI-Powered Agenda Builder\n- SIT Concierge Chatbot\n- Smart Networking Assistant\n- Automated Skill-Based Certification`
 	},
 	{
-		id: 'cloud',
-		title: 'Cloud Computing',
-		description: 'Develop scalable applications using cloud technologies',
+		id: 'content-lifecycle',
+		title: 'The Smart Stage: Sessions, Schedules & Speakers',
+		description: 'Streamline the entire content curation process using AI.',
 		icon: Cloud,
 		color: 'from-cyan-500 to-blue-500',
-		details: 'Build cloud-native apps, microservices, serverless functions, or infrastructure solutions.'
+		details: `Personas: Speakers, Organizers/Admins\n\nCore Idea: Create a unified platform that automates and adds intelligence to the speaker and session management lifecycle.\n\nKey AI-Powered Features:\n- AI-Assisted Proposal Review\n- Intelligent Agenda Balancing\n- Automated, Personalized Communication\n- Speaker Profile Auto-Enrichment`
 	},
 	{
-		id: 'web3',
-		title: 'Web3 & Blockchain',
-		description: 'Create decentralized applications and blockchain solutions',
-		icon: Coins,
-		color: 'from-yellow-500 to-orange-500',
-		details: 'Develop DApps, smart contracts, NFT platforms, or cryptocurrency solutions.'
-	},
-	{
-		id: 'iot',
-		title: 'IoT & Hardware',
-		description: 'Build connected devices and IoT ecosystems',
+		id: 'event-operations',
+		title: 'Intelligent Event Management',
+		description: 'Build an intelligent command center for smooth event execution.',
 		icon: Cpu,
 		color: 'from-green-500 to-teal-500',
-		details: 'Create smart devices, sensor networks, home automation, or industrial IoT solutions.'
-	},
-	{
-		id: 'gaming',
-		title: 'Gaming & AR/VR',
-		description: 'Develop immersive gaming experiences and virtual worlds',
-		icon: Gamepad2,
-		color: 'from-pink-500 to-purple-500',
-		details: 'Build games, AR/VR applications, metaverse experiences, or interactive simulations.'
-	},
-	{
-		id: 'mobile',
-		title: 'Mobile Innovation',
-		description: 'Create innovative mobile applications and experiences',
-		icon: Smartphone,
-		color: 'from-indigo-500 to-blue-600',
-		details: 'Develop mobile apps, cross-platform solutions, or mobile-first web experiences.'
+		details: `Persona: Organizers\n\nCore Idea: Build a central management platform where AI handles repetitive work and provides predictive insights.\n\nKey AI-Powered Features:\n- Generative Project Planning\n- Predictive Task Management & Risk Alerting\n- Intelligent Resource Assignment\n- Automated Post-Event Reporting`
 	}
 ];
 
@@ -93,7 +69,7 @@ const TracksSection = () => {
 			scale: 1,
 			transition: {
 				duration: 0.5,
-				ease: "easeOut"
+				ease: "easeOut" as const
 			}
 		}
 	};
@@ -158,11 +134,7 @@ const TracksSection = () => {
 						<h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 relative">
 							<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 
                 filter drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]">
-								Innovation
-							</span>
-							<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-600 to-blue-500
-                filter drop-shadow-[0_0_10px_rgba(59,130,246,0.5)] ml-4">
-								Tracks
+								Challenges
 							</span>
 						</h2>
 
@@ -188,7 +160,7 @@ const TracksSection = () => {
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, delay: 0.2 }}
 					>
-						Embark on your journey of innovation across six cutting-edge domains
+						Embark on your journey of innovation across six cutting-edge domains.<br />
 					</motion.p>
 				</motion.div>
 
@@ -221,16 +193,7 @@ const TracksSection = () => {
                     bg-gradient-to-br from-background/50 via-background/30 to-background/50
                     dark:from-white/[0.02] dark:via-white/[0.01] dark:to-white/[0.02]
                     shadow-lg shadow-purple-500/5"
-									onMouseEnter={() => {
-										setHoveredTrack(track.id);
-										setActiveTrack(track.id);
-									}}
-									onMouseLeave={() => {
-										setHoveredTrack(null);
-										setActiveTrack(null);
-									}}
 									onClick={() => {
-										// Toggle on tap/click for touch devices
 										setActiveTrack((prev) => (prev === track.id ? null : track.id));
 									}}
 									onKeyDown={(e) => {
@@ -252,7 +215,7 @@ const TracksSection = () => {
 
 									<CardHeader className="relative z-10">
 										<motion.div
-											className="mb-4"
+											className="mb-4 flex items-center gap-4"
 											whileHover={{ scale: 1.1 }}
 											transition={{ type: "spring", stiffness: 300 }}
 										>
@@ -274,6 +237,7 @@ const TracksSection = () => {
 												/>
 												<IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-white relative z-10" />
 											</motion.div>
+											<span className="text-base sm:text-lg font-semibold text-blue-500">Use Case {index + 1}</span>
 										</motion.div>
 
 										<CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold transition-all duration-300">
@@ -304,30 +268,21 @@ const TracksSection = () => {
 											}}
 											transition={{ duration: 0.3 }}
 										>
-											<p id={`track-details-${track.id}`} className="text-sm sm:text-base text-muted-foreground/90 bg-background/50 backdrop-blur-sm p-3 sm:p-4 rounded-lg 
-                        border dark:border-white/10 border-purple-200/50
-                        dark:bg-white/[0.02] shadow-inner">
-												{track.details}
-											</p>
-										</motion.div>
-
-										<motion.div
-											initial={{ opacity: 0 }}
-											animate={{
-												opacity: isActive ? 1 : 0,
-												y: isActive ? 0 : 10
-											}}
-											transition={{ duration: 0.3 }}
-											className="mt-4 pt-4 border-t border-white/10"
-										>
-											<div className="text-sm font-medium text-blue-400 flex items-center gap-2">
-												Explore this track
-												<motion.span
-													animate={{ x: isActive ? [0, 5, 0] : 0 }}
-													transition={{ duration: 1, repeat: Infinity }}
-												>
-													→
-												</motion.span>
+											<div id={`track-details-${track.id}`} className="text-sm sm:text-base text-muted-foreground/90 bg-background/50 backdrop-blur-sm p-3 sm:p-4 rounded-lg 
+      border dark:border-white/10 border-purple-200/50 dark:bg-white/[0.02] shadow-inner">
+												{/* Structured details */}
+												<ul className="space-y-2 list-disc list-inside">
+													<li><span className="font-semibold">Persona:</span> {track.details.split('\n')[0].replace('Persona:', '').replace('Personas:', '').trim()}</li>
+													<li><span className="font-semibold">Core Idea:</span> {track.details.split('\n')[2].replace('Core Idea:', '').trim()}</li>
+													<li>
+														<span className="font-semibold">Key AI-Powered Features:</span>
+														<ul className="ml-4 list-disc">
+															{track.details.split('Key AI-Powered Features:')[1]?.split('\n').filter(f => f.trim().startsWith('-')).map((f, i) => (
+																<li key={i}>{f.replace('-', '').trim()}</li>
+															))}
+														</ul>
+													</li>
+												</ul>
 											</div>
 										</motion.div>
 									</CardContent>
@@ -336,6 +291,7 @@ const TracksSection = () => {
 						);
 					})}
 				</motion.div>
+				<span className="block mt-8 text-blue-500 font-semibold text-lg text-center">The full theme and problem statements will be unveiled on the event day, challenging you to think on your feet and innovate in real time!</span>
 			</div>
 		</section>
 	);

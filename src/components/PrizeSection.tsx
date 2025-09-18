@@ -7,7 +7,7 @@ import { useTheme } from 'next-themes';
 const prizes = [
 	{
 		position: '1st Place',
-		amount: '₹25,000',
+		amount: 'Prizes worth ₹25,000',
 		icon: Trophy,
 		color: 'from-yellow-400 to-yellow-600',
 		glow: 'shadow-[0_0_30px_rgba(255,215,0,0.5)]',
@@ -15,7 +15,7 @@ const prizes = [
 	},
 	{
 		position: '2nd Place',
-		amount: '₹15,000',
+		amount: 'Prizes worth ₹15,000',
 		icon: Medal,
 		color: 'from-gray-300 to-gray-500',
 		glow: 'shadow-[0_0_30px_rgba(192,192,192,0.5)]',
@@ -23,7 +23,7 @@ const prizes = [
 	},
 	{
 		position: '3rd Place',
-		amount: '₹5,000',
+		amount: 'Prizes worth ₹5,000',
 		icon: Award,
 		color: 'from-amber-600 to-amber-800',
 		glow: 'shadow-[0_0_30px_rgba(205,127,50,0.5)]',
@@ -31,7 +31,7 @@ const prizes = [
 	},
 	{
 		position: 'Best Innovation',
-		amount: '₹3,000 + Goodies',
+		amount: 'Prizes worth ₹3,000 + Goodies',
 		icon: Zap,
 		color: 'from-purple-500 to-purple-700',
 		glow: 'shadow-[0_0_30px_rgba(147,51,234,0.5)]',
@@ -39,7 +39,7 @@ const prizes = [
 	},
 	{
 		position: 'People\'s Choice',
-		amount: '₹2,000 + Goodies',
+		amount: 'Prizes worth ₹2,000 + Goodies',
 		icon: Gift,
 		color: 'from-pink-500 to-pink-700',
 		glow: 'shadow-[0_0_30px_rgba(236,72,153,0.5)]',

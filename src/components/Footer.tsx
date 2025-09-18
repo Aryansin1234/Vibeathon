@@ -9,7 +9,7 @@ const Footer = () => {
   };
   const quickLinks = [
     { name: 'Home', href: '#hero' },
-    { name: 'Tracks', href: '#tracks' },
+    { name: 'Challenges', href: '#tracks' },
     { name: 'Schedule', href: '#schedule' },
     { name: 'Prizes', href: '#prizes' },
     { name: 'Contact', href: '#contact' },
@@ -121,34 +121,17 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500">
               Connect
             </h4>
-            <div className="flex gap-4">
-              {socialLinks.map((social) => {
-                const IconComponent = social.icon;
-                return (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/10 to-blue-400/10 
-                      flex items-center justify-center backdrop-blur-sm group relative overflow-hidden"
-                    aria-label={social.label}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-400/20 
-                      opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                    <IconComponent className="w-5 h-5 text-muted-foreground/80 group-hover:text-blue-500 
-                      transition-colors duration-300 relative z-10" />
-                  </motion.a>
-                );
-              })}
+            <div className="flex justify-start md:justify-start pl-2 md:pl-0">
+              <a
+                href="https://www.linkedin.com/company/sitblr/"
+                className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/10 to-blue-400/10 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Linkedin className="w-6 h-6 text-blue-500" />
+              </a>
             </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-blue-200/20">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            {/* Removed copyright, privacy policy, and other links */}
           </div>
         </div>
       </div>

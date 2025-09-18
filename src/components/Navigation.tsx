@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu, X, Sun, Moon, Zap } from 'lucide-react';
+import { Menu, X, Sun, Moon, Code2 } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 const Navigation = () => {
@@ -61,7 +61,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'Home', href: '#hero' },
-    { name: 'Tracks', href: '#tracks' },
+    { name: 'Challenges', href: '#tracks' },
     { name: 'Prizes', href: '#prizes' },
     { name: 'Schedule', href: '#schedule' },
     { name: 'Contact', href: '#contact' },
@@ -89,10 +89,10 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollToSection('#hero')}>
             <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg gradient-primary flex items-center justify-center">
-              <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+              <Code2 className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </div>
             <span className={`text-lg sm:text-xl font-bold ${scrolled ? 'text-foreground' : 'text-foreground dark:text-white'}`}>
-              Vibeathon
+              SIT Vibeathon
             </span>
           </div>
 
@@ -137,11 +137,10 @@ const Navigation = () => {
                 <Moon className="h-5 w-5" />
               }
             </Button>
-            <Button 
+            <Button asChild
               className="gradient-primary hover:glow text-white px-6 font-semibold transition-all duration-200"
-              onClick={() => scrollToSection('#cta')}
             >
-              Register
+              <a href="https://konfhub.com/sap-inside-track-bengaluru-vibeathon" target="_blank" rel="noopener noreferrer">Register</a>
             </Button>
           </div>
 
@@ -195,11 +194,10 @@ const Navigation = () => {
               );
             })}
             <div className="pt-4 pb-2">
-              <Button 
+              <Button asChild
                 className="gradient-primary hover:glow text-white w-full font-semibold"
-                onClick={() => scrollToSection('#cta')}
               >
-                Register Now
+                <a href="https://forms.gle/your-google-form-link" target="_blank" rel="noopener noreferrer">Register Now</a>
               </Button>
             </div>
           </div>
