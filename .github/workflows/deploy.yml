@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main   # or your default branch
 
 jobs:
   build-and-deploy:
@@ -19,10 +19,12 @@ jobs:
           node-version: '18'
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
-        run: npm run build
+        run: |
+          npm run build
+          cp dist/index.html dist/404.html   # 👈 SPA fallback for React Router
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
